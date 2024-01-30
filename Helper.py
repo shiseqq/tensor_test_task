@@ -61,8 +61,9 @@ class Helper(BasePage):
     def check_region(self):
         response = requests.get(self.get_href_by_locator(Locators.LOCATOR_SBIS_CONTACTS_TEXT))
         cookie_value = dict(self.get_cookie('s3reg'))
-        time.sleep(3)
-        assert cookie_value['value'] in self.current_url()
+        time.sleep(2)
+        cur_url = self.current_url()
+        assert cookie_value['value'] in cur_url
 
     def check_existing_list_of_partners(self):
         self.list_of_partners = self.find_element(Locators.LOCATOR_TENSOR_LIST_OF_PARTNERS)
